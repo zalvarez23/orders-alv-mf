@@ -1,6 +1,6 @@
 import React from "react";
 
-type Theme = "primary" | "secondary";
+type Theme = "primary" | "secondary" | "white";
 type ButtonProps = {
   theme?: Theme;
   label: string;
@@ -18,6 +18,10 @@ const Button: React.FC<ButtonProps> = ({
   style,
 }) => {
   const themes: any = {
+    white: {
+      bgColor: "bg-white hover:bg-slate-200",
+      textColor: "text-dark front-extrabold text-sm"
+    },
     primary: {
       bgColor: `${
         outlined
@@ -53,7 +57,7 @@ const Button: React.FC<ButtonProps> = ({
         themes[theme]?.textColor
       } ${twTransition} ${
         expanded && twExpanded
-      } px-3 py-1 rounded-md font-montserrat-bold ${style}`}
+      } px-3.5 py-1.5 rounded-md font-montserrat-bold shadow-lg ${style}`}
     >
       {label}
     </button>

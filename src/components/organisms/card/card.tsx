@@ -1,40 +1,64 @@
-import React from 'react'
-import Typography from '../../atoms/typography/typography'
-import ItemButton from '../../molecules/item-button'
-import Avatar from '../../atoms/avatar/avatar'
+import React from "react";
+import Typography from "../../atoms/typography/typography";
+import ItemButton from "../../molecules/item-button";
+import Avatar from "../../atoms/avatar/avatar";
+import TextIcon from "../../molecules/text-icon";
+import { myColors } from "../../../constants/colors";
 
 type CardProps = {
-  title: string,
-  body: string,
-  footer: string
-}
+  title: string;
+  body: string;
+  footer: string;
+};
 
-const Card: React.FC<CardProps> = ({title, body, footer}) =>{
-  return <div className='w-60 shadow-lg rounded-xl p-4'>
-    
-    <header>
-      <Typography label={title} variant='body' family='bold' color='text-dark'  />
-      <div className='flex gap-8 relative'>
-        <Typography label='190 g' variant='small' family='medium' color='text-gray-300' />
+const Card: React.FC<CardProps> = ({ title, body, footer }) => {
+  return (
+    <div className="w-60 shadow-lg rounded-xl p-4">
+      <header>
+        <Typography
+          label={title}
+          variant="body"
+          family="bold"
+          color="text-dark"
+        />
+        <section className="flex gap-2 relative mt-1.5">
+          <TextIcon
+            label="190 g"
+            labelColor="text-gray-300"
+            icon="point"
+            iconSize="13"
+            iconColor={myColors["gray-3"]}
+          />
+          <TextIcon
+            label="120 Kcal"
+            labelColor="text-gray-300"
+            icon="fire"
+            iconSize="10"
+            iconColor={myColors.secondary}
+          />
+          <div className="absolute right-[-40px] top-[-40px]">
+            <Avatar
+              size="small"
+              image="https://elhornodelucas.com/wp-content/uploads/2017/03/Alitas-Chilis-baja-1.jpg"
+            />
+          </div>
+        </section>
+      </header>
 
-        <Typography label='120 kal' variant='small' family='medium' color='text-gray-300' />
+      <main>
+        <Typography
+          label={body}
+          variant="small"
+          family="medium"
+          color="text-gray-300 mt-20"
+        />
+      </main>
 
-        <div className='absolute right-[-40px] top-[-40px]'>
-          <Avatar size='small' />
-        </div>
-      </div>
-    </header>
-    
-    <main>
-      <Typography label={body} variant='small' family='medium' color='text-gray-300 mt-20'/>
+      <footer className="mt-8">
+        <ItemButton buttonLabel="Add" textLabel={footer} />
+      </footer>
+    </div>
+  );
+};
 
-    </main>
-
-    <footer className='mt-8'>
-      <ItemButton buttonLabel='Add' textLabel={footer}/>
-    </footer>
-
-   </div>
-}
-
-export default Card
+export default Card;

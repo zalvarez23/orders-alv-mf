@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Button from "./button";
 
 const meta = {
-  title: "ui/Button",
+  title: "ui/atoms/Button",
   component: Button,
   parameters: {
     layout: "centered",
@@ -14,6 +14,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
+
+export const White: Story = {
+  args: {
+    label: "Button",
+    theme: "white",
+  },
+};
 export const Primary: Story = {
   args: {
     label: "Button",

@@ -1,24 +1,30 @@
 import React from "react";
 import Typography from "../atoms/typography/typography";
 import Button from "../atoms/button/button";
+import { FaBeer } from "react-icons/fa"
 
 type ItemButtonProps = {
   buttonLabel: string;
   textLabel: string;
 };
 
-const ItemButton: React.FC<ItemButtonProps> = () => {
+const ItemButton: React.FC<ItemButtonProps> = ({ buttonLabel, textLabel }) => {
   return (
     <div className="flex items-center justify-between">
       <Typography
-        label="$27.00"
+        label={textLabel}
         variant="body"
         family="bold"
         color="text-dark"
       />
-      <Button label="Add" outlined />
+      <Button label={buttonLabel} outlined />
     </div>
   );
 };
 
 export default ItemButton;
+
+ItemButton.defaultProps = {
+  buttonLabel: 'Add',
+  textLabel: '$27.00'
+}

@@ -1,21 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import ItemButton from "./item-button";
+import ProfileCard from "./profile-card";
 
 const meta = {
-  title: "ui/molecules/ItemButton",
-  component: ItemButton,
+  title: "ui/organisms/ProfileCard",
+  component: ProfileCard,
   parameters: {
-    layout: "full",
+    layout: "centered",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof ItemButton>;
+} satisfies Meta<typeof ProfileCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    buttonLabel: "Add",
-    textLabel: "$27.00",
   },
 };
