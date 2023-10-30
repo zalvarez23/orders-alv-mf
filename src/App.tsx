@@ -1,15 +1,16 @@
-import { useState } from "react";
 import "./App.css";
-import Button from "./components/atoms/button";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SingInContainer from "./containers/singIn-container";
+import HomeContainer from "./containers/home-container";
 
 function App() {
   return (
-    <>
-      <div>
-        hola aqui un componente button
-        <Button label="Mi boton" />
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SingInContainer />} />
+        <Route path="/home" element={<HomeContainer />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

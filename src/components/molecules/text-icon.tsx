@@ -1,7 +1,6 @@
 import React from "react";
 import { myColors } from "../../constants/colors";
 import Icon, { MyIcons } from "../atoms/icon/icon";
-import { TypeIconNames } from "../../constants/components/types";
 import Typography, {
   families,
   spacings,
@@ -15,8 +14,9 @@ type TextIconProps = {
   icon?: MyIcons;
   iconColor?: string;
   iconSize?: string;
-  variant: variants | undefined;
+  variant?: variants | undefined;
   family?: families | undefined;
+  showBorder?: boolean;
   styles?: string;
 };
 
@@ -29,11 +29,17 @@ const TextIcon: React.FC<TextIconProps> = ({
   labelColor,
   family,
   variant = "small",
+  showBorder = false,
   styles,
 }) => {
   return (
-    <div className={`flex items-center gap-1.5 ${styles}`}>
-      <Icon name={icon as TypeIconNames} size={iconSize} color={iconColor} />
+    <div
+      className={`flex items-center cursor-pointer gap-1.5 relative ${styles}`}
+    >
+      {showBorder && (
+        <div className="bg-danger-light w-1 h-5 rounded-md absolute -left-7"></div>
+      )}
+      <Icon name={icon as MyIcons} size={iconSize} color={iconColor} />
       <Typography
         label={label}
         variant={variant}

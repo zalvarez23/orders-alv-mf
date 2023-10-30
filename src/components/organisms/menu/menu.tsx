@@ -2,11 +2,12 @@ import React from "react";
 import { MyIcons } from "../../atoms/icon/icon";
 import TextIcon from "../../molecules/text-icon";
 import { myColors } from "../../../constants/colors";
-import Typography from "../../atoms/typography/typography";
 
 type MenuItemProps = {
   icon: MyIcons;
   label: string;
+  color: string;
+  showBorder: boolean;
 };
 type MenuProps = {
   menuList: MenuItemProps[];
@@ -14,28 +15,31 @@ type MenuProps = {
 
 const Menu: React.FC<MenuProps> = ({ menuList }) => {
   return (
-    <div className="w-60 min-h-screen rounded-2xl py-6 shadow-lg mt-4 flex flex-col justify-between">
-      <header className="flex justify-center">
+    <div className="w-60 min-h-screen rounded-2xl py-6 shadow-lg flex flex-col justify-between bg-white">
+      <header className="flex justify-center mt-6">
         <TextIcon
-          labelSpacing="widest"
-          labelColor="text-gray-600"
+          labelSpacing="wider"
+          labelColor="text-dark"
           label="FreshFood"
           variant="body"
           family="bold"
+          iconColor={myColors["danger-light"]}
         />
       </header>
-      <main className="flex flex-col gap-7 items-center flex-1 mt-20">
+      <main className="flex flex-col gap-7 items-center flex-1 mt-16">
         {menuList.map((menu) => (
           <TextIcon
+            key={`text-icon-${menu.label}`}
             styles="min-w-[100px] gap-4"
             label={menu.label}
-            labelSpacing="wide"
+            labelSpacing="wider"
             variant="small"
-            labelColor="text-gray-600"
-            family="bold"
+            family="semibold"
             icon={menu.icon}
-            iconSize="20"
-            iconColor={myColors.dark}
+            iconSize="17"
+            iconColor={menu.color}
+            showBorder={menu.showBorder}
+            labelColor="text-gray-700"
           />
         ))}
       </main>
@@ -49,7 +53,7 @@ const Menu: React.FC<MenuProps> = ({ menuList }) => {
           family="bold"
           icon="logout"
           iconSize="20"
-          iconColor={myColors.dark}
+          iconColor={myColors["danger-light"]}
         />
       </footer>
     </div>
@@ -60,9 +64,9 @@ export default Menu;
 
 Menu.defaultProps = {
   menuList: [
-    { icon: "menu", label: "Menu" },
-    { icon: "car", label: "Delivery" },
-    { icon: "payment", label: "Payment" },
-    { icon: "about", label: "About" },
+    { icon: "menu", label: "Menu", color: myColors["danger-light"] },
+    { icon: "car", label: "Delivery", color: myColors.primary },
+    { icon: "payment", label: "Payment", color: myColors.secondary },
+    { icon: "about", label: "About", color: myColors["gray-4"] },
   ],
 };

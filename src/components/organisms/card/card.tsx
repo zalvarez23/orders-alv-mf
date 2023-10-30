@@ -13,7 +13,7 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({ title, body, footer }) => {
   return (
-    <div className="w-60 shadow-lg rounded-xl p-4">
+    <div className="w-60 shadow-lg rounded-xl p-4 bg-white">
       <header>
         <Typography
           label={title}

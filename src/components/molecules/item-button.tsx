@@ -1,7 +1,6 @@
 import React from "react";
 import Typography from "../atoms/typography/typography";
 import Button from "../atoms/button/button";
-import { FaBeer } from "react-icons/fa"
 
 type ItemButtonProps = {
   buttonLabel: string;
@@ -25,6 +24,6 @@ const ItemButton: React.FC<ItemButtonProps> = ({ buttonLabel, textLabel }) => {
 export default ItemButton;
 
 ItemButton.defaultProps = {
-  buttonLabel: 'Add',
-  textLabel: '$27.00'
-}
+  buttonLabel: "Add",
+  textLabel: "$27.00",
+};

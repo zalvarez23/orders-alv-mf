@@ -8,4 +8,5 @@ export const myColors = {
   "gray-4": "#eeeeee",
   "gray-5": "#f7f7f7",
   "gray-6": "#d8d8d8",
+  "danger-light": "#f56564",
 };

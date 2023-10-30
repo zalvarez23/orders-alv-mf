@@ -7,7 +7,8 @@ type ButtonProps = {
   disabled?: boolean;
   expanded?: boolean;
   outlined?: boolean;
-  style?: string;
+  className?: string;
+  onClick?: () => void;
 };
 const Button: React.FC<ButtonProps> = ({
   label,
@@ -15,12 +16,13 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   expanded,
   outlined,
-  style,
+  className,
+  onClick,
 }) => {
   const themes: any = {
     white: {
       bgColor: "bg-white hover:bg-slate-200",
-      textColor: "text-dark front-extrabold text-sm"
+      textColor: "text-dark front-extrabold text-sm",
     },
     primary: {
       bgColor: `${
@@ -34,12 +36,10 @@ const Button: React.FC<ButtonProps> = ({
     },
     secondary: {
       bgColor: `${
-        outlined
-          ? "border-2 border-green-500"
-          : "bg-green-500 hover:bg-green-700"
+        outlined ? "border-2 border-rose-500" : "bg-rose-500 hover:bg-rose-700"
       }`,
       textColor: `${
-        outlined ? "text-green-500" : "text-white"
+        outlined ? "text-rose-500" : "text-white"
       } font-bold text-sm`,
     },
   };
@@ -53,11 +53,12 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${disabled && twDisabled} ${themes[theme].bgColor} ${
-        themes[theme]?.textColor
-      } ${twTransition} ${
+      className={`${className} ${disabled && twDisabled} ${
+        themes[theme].bgColor
+      } ${themes[theme]?.textColor} ${twTransition} ${
         expanded && twExpanded
-      } px-3.5 py-1.5 rounded-md font-montserrat-bold shadow-lg ${style}`}
+      } px-3.5 py-1.5 rounded-md font-montserrat-bold shadow-lg`}
+      onClick={onClick}
     >
       {label}
     </button>

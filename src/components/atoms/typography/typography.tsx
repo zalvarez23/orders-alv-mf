@@ -2,21 +2,23 @@ import React from "react";
 
 export type variants = "title" | "subtitle" | "body" | "small" | "link";
 export type families = "medium" | "regular" | "bold" | "semibold";
-export type spacings = 'normal' | 'wide' | 'wider' | 'widest'
+export type spacings = "normal" | "wide" | "wider" | "widest";
 
 type TypographyProps = {
   label: string;
   variant: variants;
   family?: families;
   color?: string;
-  spacing?: spacings
+  spacing?: spacings;
+  className?: string;
 };
 const Typography: React.FC<TypographyProps> = ({
   label,
   variant,
   family,
   color,
-  spacing
+  spacing,
+  className,
 }) => {
   const twVariants = {
     title: "text-2xl",
@@ -25,9 +27,11 @@ const Typography: React.FC<TypographyProps> = ({
     small: "text-xs",
     link: "text-base underline cursor-pointer",
   };
-  const letterSpacing = `tracking-${spacing}`
+  const letterSpacing = `tracking-${spacing}`;
   return (
-    <p className={`${twVariants[variant]} font-montserrat-${family} ${color}  ${letterSpacing}`}>
+    <p
+      className={`${twVariants[variant]} font-montserrat-${family} ${color}  ${letterSpacing} ${className}`}
+    >
       {label}
     </p>
   );
@@ -40,5 +44,5 @@ Typography.defaultProps = {
   variant: "body",
   family: "medium",
   color: "text-dark",
-  spacing: "normal"
+  spacing: "normal",
 };

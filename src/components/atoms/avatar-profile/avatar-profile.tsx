@@ -1,7 +1,7 @@
 type sizes = "small" | "medium" | "large";
 
 type AvatarProps = {
-  image?: string;
+   image?: string;
   size: sizes;
 };
 

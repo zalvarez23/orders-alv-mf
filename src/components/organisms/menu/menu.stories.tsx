@@ -16,10 +16,10 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     menuList: [
-      { icon: 'menu', label: 'Menu' },
-      { icon: 'car', label: 'Delivery' },
-      { icon: 'payment', label: 'Payment' },
-      { icon: 'about', label: 'About' }
-    ]
+      { icon: "menu", label: "Menu" },
+      { icon: "car", label: "Delivery" },
+      { icon: "payment", label: "Payment" },
+      { icon: "about", label: "About" },
+    ],
   },
 };

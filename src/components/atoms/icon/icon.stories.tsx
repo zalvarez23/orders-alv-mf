@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Icon, { MyIcons } from "./icon";
+import Icon from "./icon";
 import { myColors } from "../../../constants/colors";
 const meta = {
   title: "ui/atoms/Icons",
@@ -9,7 +9,20 @@ const meta = {
   },
   argTypes: {
     name: {
-      options: ["fire", "car", "payment", "about", "menu", "point", "logout"],
+      options: [
+        "fire",
+        "car",
+        "payment",
+        "about",
+        "menu",
+        "point",
+        "logout",
+        "person",
+        "search",
+        "user",
+        "car-bg",
+        "ubication",
+      ],
       control: { type: "select" },
     },
   },
