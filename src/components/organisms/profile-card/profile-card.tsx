@@ -4,6 +4,7 @@ import Typography from "../../atoms/typography/typography";
 import TextIcon from "../../molecules/text-icon";
 import { myColors } from "../../../constants/colors";
 import Button from "../../atoms/button/button";
+import UserRank from "../../molecules/user-rank";
 
 type ProfileCardProps = {
   title: string;
@@ -17,13 +18,12 @@ type ProfileCardProps = {
 const ProfileCard: React.FC<ProfileCardProps> = () => {
   return (
     <div className="py-5 px-5 rounded-lg shadow-md relative">
-      <section className="absolute right-0 top-0 px-4 py-2 bg-amber-400 rounded-tr-md">
-        <Typography
-          label="Premiun"
-          variant="small"
-          family="bold"
-          color="text-white"
-        />
+      <section className="absolute right-0 top-0">
+      <UserRank
+        family="bold"
+        label="Gold"
+        variant="body"
+      />
       </section>
       <header className="flex gap-4">
         <section className="relative -top-16">

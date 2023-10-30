@@ -1,7 +1,7 @@
 import React from "react";
 import Typography from "../atoms/typography/typography";
 import Button from "../atoms/button/button";
-import { FaBeer } from "react-icons/fa"
+/* import { FaBeer } from "react-icons/fa" */
 
 type ItemButtonProps = {
   buttonLabel: string;
