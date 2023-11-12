@@ -1,6 +1,5 @@
-import { useState } from "react";
 import "./App.css";
-import Button from "./components/atoms/button";
+import Button from "./components/atoms/button/button";
 
 function App() {
   return (

@@ -13,7 +13,7 @@ const Avatar: React.FC<AvatarProps> = ({ image, size }) => {
   };
   return (
     <div
-      className={`${twSizes[size]} bg-white rounded-full flex items-center justify-cente`}
+      className={`${twSizes[size]} bg-white rounded-full flex items-center justify-center`}
     >
       <img
         className={`${twSizes[size]} shadow-lg p-1.5 rounded-full object-cover`}
