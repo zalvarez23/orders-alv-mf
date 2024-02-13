@@ -14,7 +14,7 @@ type ProfileCardProps = {
   typeProfile: string;
 };
 
-const ProfileCard: React.FC<ProfileCardProps> = () => {
+const ProfileCard: React.FC = () => {
   return (
     <div className="py-5 px-5 rounded-lg shadow-md relative pb-12 md:pb-5 bg-white">
       <section className="absolute right-0 bottom-0 md:bottom-auto md:top-0 px-4 py-2 bg-amber-400 rounded-tr-md">

@@ -15,7 +15,7 @@ type MenuProps = {
 
 const Menu: React.FC<MenuProps> = ({ menuList }) => {
   return (
-    <div className="w-60 min-h-screen rounded-2xl py-6 shadow-lg flex flex-col justify-between bg-white">
+    <div className="min-h-screen rounded-2xl py-6 shadow-lg bg-white relative md:fixed flex-col justiry-between hidden md:flex w-48 z-10">
       <header className="flex justify-center mt-6">
         <TextIcon
           labelSpacing="wider"
@@ -34,7 +34,7 @@ const Menu: React.FC<MenuProps> = ({ menuList }) => {
             label={menu.label}
             labelSpacing="wider"
             variant="small"
-            family="semibold"
+            family="bold"
             icon={menu.icon}
             iconSize="17"
             iconColor={menu.color}

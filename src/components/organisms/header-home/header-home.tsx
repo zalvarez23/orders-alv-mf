@@ -6,6 +6,9 @@ import TextIcon from "../../molecules/text-icon";
 const HeaderHome = () => {
   return (
     <div className="flex flex-wrap justify-between w-full">
+      <div className="md:hidden">
+        <Icon name="menu" size="25" color={myColors.dark} />
+      </div>
       <TextIcon
         label="Lima - Peru"
         iconSize="17"
@@ -15,7 +18,10 @@ const HeaderHome = () => {
         iconColor={myColors.dark}
         styles="gap-2"
       />
-      <InputSearch />
+      <div className="hidden md:flex">
+        <InputSearch />
+      </div>
+
       <section className="flex items-center justify-center gap-5">
         <TextIcon
           label="Kevin Salazar"

@@ -16,8 +16,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    placeholder: "Username",
+    value: "hola",
     onChange: (value) => {
       console.log(value);
     },
+    theme: "dark",
   },
 };

@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import MenuHeader from "./menu-header";
+import HomeTemplate from "./home-template";
 
 const meta = {
-  title: "ui/templates/MenuHeader",
-  component: MenuHeader,
+  title: "ui/templates/HomeTemplate",
+  component: HomeTemplate,
   parameters: {
     layout: "full",
   },
   tags: ["autodocs"],
-} satisfies Meta<typeof MenuHeader>;
+} satisfies Meta<typeof HomeTemplate>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

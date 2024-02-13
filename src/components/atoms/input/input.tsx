@@ -20,7 +20,7 @@ type InputProps = {
 
 const Input: React.FC<InputProps> = ({
   value,
-  icon = "fire",
+  icon,
   placeholder = "Ingresar datos",
   theme = "gray-3",
   onChange,
@@ -38,17 +38,20 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <div className="relative">
-      <section className="absolute left-1 top-0">
-        <Icon
-          name={icon}
-          color={
-            focus || valueState
-              ? myColors["danger-light"]
-              : myColors["danger-light"]
-          }
-          size="18"
-        />
-      </section>
+      {icon && (
+        <section className="absolute left-1 top-0">
+          <Icon
+            name={icon}
+            color={
+              focus || valueState
+                ? myColors["danger-light"]
+                : myColors["danger-light"]
+            }
+            size="18"
+          />
+        </section>
+      )}
+
       <p
         className={`text-xs absolute left-9 -top-2 tracking-wide pointer-events-none transform ${
           focus || valueState

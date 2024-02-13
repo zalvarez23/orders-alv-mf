@@ -4,7 +4,13 @@ const meta = {
   title: "ui/atoms/Table",
   component: Table,
   parameters: {
-    layout: "centered",
+    layout: "full",
+  },
+  argTypes: {
+    status: {
+      options: ["ACTIVE", "PENDING"],
+      control: { type: "radio" },
+    },
   },
   tags: ["autodocs"],
 } satisfies Meta<typeof Table>;
@@ -16,6 +22,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    status: "20",
+    status: "ACTIVE",
   },
 };

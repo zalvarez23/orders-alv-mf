@@ -4,10 +4,10 @@ import HeaderHome from "../../organisms/header-home/header-home";
 import Menu from "../../organisms/menu/menu";
 import ProfileCard from "../../organisms/profile-card/profile-card";
 
-type MenuHeaderProps = {
+type HomeTemplateProps = {
   children: React.ReactNode;
 };
-const MenuHeader: React.FC<MenuHeaderProps> = ({ children }) => {
+const HomeTemplate: React.FC<HomeTemplateProps> = ({ children }) => {
   const menuList: any = [
     {
       icon: "menu",
@@ -38,15 +38,13 @@ const MenuHeader: React.FC<MenuHeaderProps> = ({ children }) => {
     <div className="flex gap-3 w-full bg-white-light">
       <Menu menuList={menuList} />
       <section className="w-full px-6 pt-3">
-        <HeaderHome />
-        <main className="h-full mt-20">
-          {children}
-          <ProfileCard />
-          <Card />
-        </main>
+        <header className="md:pl-48">
+          <HeaderHome />
+        </header>
+        <main className="h-full mt-5 md:pl-48">{children}</main>
       </section>
     </div>
   );
 };
 
-export default MenuHeader;
+export default HomeTemplate;
