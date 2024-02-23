@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { myColors } from "../../../constants/colors";
 import PersonImage from "./person";
 const meta = {
   title: "ui/atoms/person",

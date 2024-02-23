@@ -5,12 +5,14 @@ export type families = "medium" | "regular" | "bold" | "semibold";
 export type spacings = "normal" | "wide" | "wider" | "widest";
 
 type TypographyProps = {
-  label: string;
+  label?: string;
   variant: variants;
   family?: families;
   color?: string;
   spacing?: spacings;
   className?: string;
+  onClick?: () => void;
+  children?: React.ReactNode;
 };
 const Typography: React.FC<TypographyProps> = ({
   label,
@@ -19,6 +21,8 @@ const Typography: React.FC<TypographyProps> = ({
   color,
   spacing,
   className,
+  onClick,
+  children,
 }) => {
   const twVariants = {
     title: "text-2xl",
@@ -28,11 +32,18 @@ const Typography: React.FC<TypographyProps> = ({
     link: "text-base underline cursor-pointer",
   };
   const letterSpacing = `tracking-${spacing}`;
+
+  const handlerOnClick = () => {
+    typeof onClick === "function" && onClick();
+  };
+
   return (
     <p
+      onClick={handlerOnClick}
       className={`${twVariants[variant]} font-montserrat-${family} ${color}  ${letterSpacing} ${className}`}
     >
       {label}
+      {children}
     </p>
   );
 };
@@ -40,7 +51,7 @@ const Typography: React.FC<TypographyProps> = ({
 export default Typography;
 
 Typography.defaultProps = {
-  label: "My Text",
+  label: "",
   variant: "body",
   family: "medium",
   color: "text-dark",

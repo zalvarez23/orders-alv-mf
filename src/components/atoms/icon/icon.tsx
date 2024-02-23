@@ -1,12 +1,13 @@
 import React from "react";
-import { AiFillFire, AiOutlineInfoCircle } from "react-icons/ai";
-import { myColors } from "../../../constants/colors";
-import { BsCartDash, BsPersonHearts, BsCartFill } from "react-icons/bs";
-import { MdOutlinePayments } from "react-icons/md";
-import { HiLogout, HiMenuAlt3 } from "react-icons/hi";
-import { HiMapPin } from "react-icons/hi2";
-import { TbPointFilled } from "react-icons/tb";
-import { BiSearchAlt, BiSolidUserCircle } from "react-icons/bi";
+import { IconType } from "react-icons";
+import * as AiIcons from "react-icons/ai";
+import * as BsICons from "react-icons/bs";
+import * as MdIcons from "react-icons/md";
+import * as HiIcons from "react-icons/hi";
+import * as Hi2Icons from "react-icons/hi2";
+import * as TbIcons from "react-icons/tb";
+import * as BiIcons from "react-icons/bi";
+import * as Io5Icons from "react-icons/io5";
 
 export type MyIcons =
   | "fire"
@@ -20,37 +21,67 @@ export type MyIcons =
   | "person"
   | "search"
   | "user"
-  | "ubication";
+  | "ubication"
+  | "lock"
+  | "email"
+  | "phone"
+  | "arrowBottom"
+  | "back";
 
-type IconProps = {
-  size?: string;
-  name: MyIcons;
-  color: string;
-  className?: string;
+const IconsTransform: Record<MyIcons, string> = {
+  fire: "AiFillFire",
+  car: "BsCartDash",
+  "car-bg": "BsCartFill",
+  payment: "MdOutlinePayments",
+  menu: "HiMenuAlt3",
+  about: "AiOutlineInfoCircle",
+  point: "TbPointFilled",
+  logout: "HiLogout",
+  person: "HiUser",
+  search: "BiSearchAlt",
+  user: "BiSolidUserCircle",
+  ubication: "HiMapPin",
+  lock: "IoLockOpen",
+  email: "MdOutlineAlternateEmail",
+  phone: "BsPhone",
+  arrowBottom: "MdKeyboardArrowDown",
+  back: "MdOutlineKeyboardBackspace",
 };
 
-const Icon: React.FC<IconProps> = ({ size = "20", name, color, className }) => {
-  const icons: Record<MyIcons, any> = {
-    fire: <AiFillFire size={size} color={color} />,
-    car: <BsCartDash size={size} color={color} />,
-    "car-bg": <BsCartFill size={size} color={color} />,
-    payment: <MdOutlinePayments size={size} color={color} />,
-    menu: <HiMenuAlt3 size={size} color={color} />,
-    about: <AiOutlineInfoCircle size={size} color={color} />,
-    point: <TbPointFilled size={size} color={color} />,
-    logout: <HiLogout size={size} color={color} />,
-    person: <BsPersonHearts size={size} color={color} />,
-    search: <BiSearchAlt size={size} color={color} />,
-    user: <BiSolidUserCircle size={size} color={color} />,
-    ubication: <HiMapPin size={size} color={color} />,
-  };
-  return <div className={`${className}`}>{icons[name as MyIcons]}</div>;
+interface IconProps {
+  name: MyIcons;
+  size?: number | string;
+  color?: string;
+  className?: string;
+}
+const Icon: React.FC<IconProps> = ({
+  name,
+  size = 24,
+  color = "black",
+  className,
+}) => {
+  const iconName = IconsTransform[name as MyIcons];
+
+  const formattedIconName = `${iconName
+    .charAt(0)
+    .toUpperCase()}${iconName.slice(1)}`;
+
+  const IconComponent =
+    (AiIcons as Record<string, IconType>)[formattedIconName] ||
+    (BsICons as Record<string, IconType>)[formattedIconName] ||
+    (MdIcons as Record<string, IconType>)[formattedIconName] ||
+    (HiIcons as Record<string, IconType>)[formattedIconName] ||
+    (Hi2Icons as Record<string, IconType>)[formattedIconName] ||
+    (TbIcons as Record<string, IconType>)[formattedIconName] ||
+    (BiIcons as Record<string, IconType>)[formattedIconName] ||
+    (Io5Icons as Record<string, IconType>)[formattedIconName];
+
+  if (!IconComponent) {
+    console.error(`Icono '${name}' no encontrado en el conjunto proporcionado`);
+    return null;
+  }
+
+  return <IconComponent size={size} color={color} className={className} />;
 };
 
 export default Icon;
-
-Icon.defaultProps = {
-  size: "20",
-  name: "fire",
-  color: myColors.dark,
-};

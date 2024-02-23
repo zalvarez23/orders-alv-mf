@@ -1,4 +1,5 @@
 import React from "react";
+import LoadingDotPulse from "../loading/loading-dot-pulse";
 
 type Theme = "primary" | "secondary" | "white";
 type ButtonProps = {
@@ -8,7 +9,9 @@ type ButtonProps = {
   expanded?: boolean;
   outlined?: boolean;
   className?: string;
+  type?: "button" | "submit" | "reset";
   onClick?: () => void;
+  isLoading?: boolean;
 };
 const Button: React.FC<ButtonProps> = ({
   label,
@@ -17,7 +20,9 @@ const Button: React.FC<ButtonProps> = ({
   expanded,
   outlined,
   className,
+  type,
   onClick,
+  isLoading,
 }) => {
   const themes: any = {
     white: {
@@ -53,14 +58,15 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      type={type}
       className={`${className} ${disabled && twDisabled} ${
         themes[theme].bgColor
       } ${themes[theme]?.textColor} ${twTransition} ${
         expanded && twExpanded
-      } px-3.5 py-1.5 rounded-md font-montserrat-bold shadow-lg`}
+      } px-3.5 h-10 rounded-md font-montserrat-bold shadow-lg`}
       onClick={onClick}
     >
-      {label}
+      {isLoading ? <LoadingDotPulse /> : label}
     </button>
   );
 };

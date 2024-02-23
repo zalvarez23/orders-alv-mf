@@ -18,6 +18,7 @@ type TextIconProps = {
   family?: families | undefined;
   showBorder?: boolean;
   styles?: string;
+  onClickIcon?: () => void;
 };
 
 const TextIcon: React.FC<TextIconProps> = ({
@@ -31,7 +32,14 @@ const TextIcon: React.FC<TextIconProps> = ({
   variant = "small",
   showBorder = false,
   styles,
+  onClickIcon,
 }) => {
+  const handleOnClickIcon = () => {
+    if (onClickIcon) {
+      onClickIcon();
+    }
+  };
+
   return (
     <div
       className={`flex items-center cursor-pointer gap-1.5 relative ${styles}`}
@@ -39,7 +47,9 @@ const TextIcon: React.FC<TextIconProps> = ({
       {showBorder && (
         <div className="bg-danger-light w-1 h-5 rounded-md absolute -left-7"></div>
       )}
-      <Icon name={icon as MyIcons} size={iconSize} color={iconColor} />
+      <div role="button" onClick={handleOnClickIcon}>
+        <Icon name={icon as MyIcons} size={iconSize} color={iconColor} />
+      </div>
       <Typography
         label={label}
         variant={variant}

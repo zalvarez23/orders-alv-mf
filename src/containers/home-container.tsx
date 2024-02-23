@@ -1,20 +1,8 @@
-import { useEffect } from "react";
 import Table from "../components/atoms/table/table";
 import ProfileCard from "../components/organisms/profile-card/profile-card";
 import HomeTemplate from "../components/templates/home-template/home-template";
 
 const HomeContainer: React.FC = () => {
-  const getTables = () => {
-    fetch("https://posapimarket.azurewebsites.net/api/table")
-      .then((res) => res.json)
-      .then((res) => {
-        console.log(res);
-      });
-  };
-
-  useEffect(() => {
-    getTables();
-  }, []);
   const tables = [
     { name: "Mesa 1", status: "PENDING" },
     { name: "Mesa 2", status: "ACTIVE" },
@@ -33,7 +21,7 @@ const HomeContainer: React.FC = () => {
   ];
   return (
     <HomeTemplate>
-      <header>
+      <header className="pt-20">
         <ProfileCard />
       </header>
       <main className="mt-5 py-5 px-3 md:px-6 bg-white rounded-lg shadow">

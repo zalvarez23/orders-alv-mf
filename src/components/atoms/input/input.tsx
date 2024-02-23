@@ -16,16 +16,17 @@ type InputProps = {
   onChange?: (value: string) => void;
   placeholderClass?: string;
   inputClass?: string;
+  type?: string;
 };
 
 const Input: React.FC<InputProps> = ({
   value,
   icon,
   placeholder = "Ingresar datos",
-  theme = "gray-3",
   onChange,
   placeholderClass,
   inputClass,
+  type = "text",
 }) => {
   const [focus, setFocus] = useState<boolean>(false);
   const [valueState, setValueState] = useState(value);
@@ -39,7 +40,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="relative">
       {icon && (
-        <section className="absolute left-1 top-0">
+        <section className="absolute left-3 top-2.5">
           <Icon
             name={icon}
             color={
@@ -53,20 +54,21 @@ const Input: React.FC<InputProps> = ({
       )}
 
       <p
-        className={`text-xs absolute left-9 -top-2 tracking-wide pointer-events-none transform ${
+        className={`text-xs absolute left-11 top-1 tracking-wide pointer-events-none transform ${
           focus || valueState
-            ? "-translate-y-3 text-danger-light text-xs11 font-montserrat-bold opacity-80"
-            : "translate-y-2 text-gray-300 text-xs10"
+            ? "-translate-y-4 -translate-x-10 text-white  text-xs11 font-montserrat-bold opacity-80"
+            : "translate-y-2 text-gray-300 text-xs12"
         } transition-transform duration-300 ${placeholderClass}`}
       >
         {placeholder}
       </p>
       <input
+        type={type}
         onFocus={handlerOnFocus}
         onBlur={handlerOnBlur}
         onChange={handlerOnChange}
-        className={`focus:outline-none w-full border-b-2 pl-9 py-1.5 text-xs tracking-wider text-gray-700 ${
-          focus || valueState ? "border-danger-light" : `border-danger-light`
+        className={`focus:outline-none border-b-2 border-rose-600 text-xs tracking-wider text-gray-700 pl-10 h-10 ${
+          focus || valueState ? "border-primary-light" : `border-danger`
         } ${inputClass}`}
         value={valueState}
       />
